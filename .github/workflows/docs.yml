@@ -37,9 +37,11 @@ jobs:
         run: |
           ros install 40ants/cl-info
           cl-info
+      - name: Install cldomain Helper
+        run: ros install 40ants/cldomain
       - name: Install Pipenv
         run: |
-          pip3 install -vvv pipenv
+          pip3 install pipenv
           echo /home/runner/.local/bin >> $GITHUB_PATH
       - name: Install Python Dependencies
         run: /home/runner/.local/bin/pipenv install
