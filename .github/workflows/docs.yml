@@ -47,3 +47,5 @@ jobs:
         run: /home/runner/.local/bin/pipenv install
       - name: Build docs
         run: /home/runner/.local/bin/pipenv run docs/scripts/build.ros
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -104,7 +104,11 @@ behaviour could be overriden by keyword argument ``:raise t``."
        (run (concatenate 'string "git remote get-url " upstream)))
       ;; If we are running inside github actions
       ((uiop:getenv "GITHUB_ACTIONS")
-       (format nil "git@github.com:~A.git"
+       (unless (uiop:getenv "GITHUB_TOKEN")
+         (error 'unable-to-proceed
+                :message "Please, provide GITHUB_TOKEN environment variable."))
+       (format nil "https://~A@github.com/~A"
+               (uiop:getenv "GITHUB_TOKEN")
                (uiop:getenv "GITHUB_REPOSITORY")))
       ;; otherwise make it from travis secret token and repo slug
       (t
