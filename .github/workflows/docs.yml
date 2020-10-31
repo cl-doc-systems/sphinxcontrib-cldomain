@@ -12,6 +12,8 @@ on:
 jobs:
   build_docs:
     runs-on: ubuntu-latest
+    env:
+      PIPENV_PIPFILE: docs/scripts/Pipfile
     steps:
       - uses: actions/checkout@v1
       - name: Install Roswell
@@ -21,5 +23,9 @@ jobs:
           curl -L https://raw.githubusercontent.com/roswell/roswell/master/scripts/install-for-ci.sh | sh
       - name: Install Ultralisp
         run: ros -e '(ql-dist:install-dist "http://dist.ultralisp.org/" :prompt nil)'
+      - name: Create virtualenv
+        run: |
+          pip install pipenv
+          pipenv install
       - name: Build docs
-        run: docs/scripts/build.ros
+        run: pipenv run docs/scripts/build.ros
