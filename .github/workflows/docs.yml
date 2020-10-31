@@ -1,0 +1,24 @@
+name: 'Build Docs'
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'master'
+  schedule:
+    # rebuild docs at 10 AM every Monday
+    - cron:  '0 10 * * 1'
+
+jobs:
+  build_docs:
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install Roswell
+        env:
+          LISP: sbcl-bin
+        run: |
+          curl -L https://raw.githubusercontent.com/roswell/roswell/master/scripts/install-for-ci.sh | sh
+      - name: Install Ultralisp
+        run: ros -e '(ql-dist:install-dist "http://dist.ultralisp.org/" :prompt nil)'
+      - name: Build docs
+        run: docs/scripts/build.ros
