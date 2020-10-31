@@ -11,6 +11,7 @@ on:
 
 jobs:
   build_docs:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: Install Roswell
