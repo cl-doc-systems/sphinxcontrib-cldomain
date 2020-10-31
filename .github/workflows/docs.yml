@@ -24,13 +24,15 @@ jobs:
           echo /home/runner/.roswell/bin >> $GITHUB_PATH
       - name: Install Ultralisp
         run: ros -e '(ql-dist:install-dist "http://dist.ultralisp.org/" :prompt nil)'
+      - name: Install Pythonn 3.7
+        run: |
+          apt-get update
+          apt-get install --yes software-properties-common
+          add-apt-repository --yes ppa:deadsnakes/ppa
+          apt-get install python3.7
       - name: Check Python Version
         run: |
-          python3 --version
-          which python3.6
-          which python3.7
-          which python3.8
-          python3.8 --version
+          python3.7 --version
       - name: Check CL Version
         run: |
           ros install 40ants/cl-info
