@@ -23,6 +23,12 @@ jobs:
           curl -L https://raw.githubusercontent.com/roswell/roswell/master/scripts/install-for-ci.sh | sh
       - name: Install Ultralisp
         run: ros -e '(ql-dist:install-dist "http://dist.ultralisp.org/" :prompt nil)'
+      - name: Check Python Version
+        run: python3 --version
+      - name: Check CL Version
+        run: |
+          ros install 40ants/cl-info
+          cl-info
       - name: Create virtualenv
         run: |
           pip3 install -vvv pipenv
