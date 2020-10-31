@@ -16,14 +16,14 @@ jobs:
       PIPENV_PIPFILE: docs/scripts/Pipfile
     steps:
       - uses: actions/checkout@v1
+      - name: Show env
+        run: 'env | sort -u'
       - name: Install Roswell
         env:
           LISP: sbcl-bin
         run: |
           curl -L https://raw.githubusercontent.com/roswell/roswell/master/scripts/install-for-ci.sh | sh
           echo /home/runner/.roswell/bin >> $GITHUB_PATH
-      # - name: Install Ultralisp
-      #   run: ros -e '(ql-dist:install-dist "http://dist.ultralisp.org/" :prompt nil)'
       - name: Install Pythonn 3.7
         run: |
           sudo apt-get update
