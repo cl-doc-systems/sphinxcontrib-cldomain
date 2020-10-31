@@ -26,6 +26,6 @@ jobs:
       - name: Create virtualenv
         run: |
           pip3 install -vvv pipenv
-          pipenv install
+          /home/runner/.local/bin/pipenv install
       - name: Build docs
-        run: pipenv run docs/scripts/build.ros
+        run: /home/runner/.local/bin/pipenv run docs/scripts/build.ros
