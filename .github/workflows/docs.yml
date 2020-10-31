@@ -26,10 +26,10 @@ jobs:
         run: ros -e '(ql-dist:install-dist "http://dist.ultralisp.org/" :prompt nil)'
       - name: Install Pythonn 3.7
         run: |
-          apt-get update
-          apt-get install --yes software-properties-common
-          add-apt-repository --yes ppa:deadsnakes/ppa
-          apt-get install python3.7
+          sudo apt-get update
+          sudo apt-get install --yes software-properties-common
+          sudo add-apt-repository --yes ppa:deadsnakes/ppa
+          sudo apt-get install python3.7
       - name: Check Python Version
         run: |
           python3.7 --version
