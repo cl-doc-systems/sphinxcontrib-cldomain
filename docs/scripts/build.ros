@@ -132,10 +132,13 @@ behaviour could be overriden by keyword argument ``:raise t``."
   (git "add .")
   
   (cond
-   ((git-repository-was-changed-p)
-    (git "commit -m 'Update docs'")
+    ((git-repository-was-changed-p)
+     (when (uiop:getenv "GITHUB_ACTIONS")
+       (git "config --global user.name \"github-actions[bot]\"")
+       (git "config --global user.email \"actions@github.com\""))
+     (git "commit -m 'Update docs'")
     
-    (git "push --force origin master:gh-pages"))
+     (git "push --force origin master:gh-pages"))
    ;; or
    (t (log:info "Everything is up to date."))))
 
