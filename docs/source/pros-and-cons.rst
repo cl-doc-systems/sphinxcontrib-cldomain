@@ -12,7 +12,6 @@ Pros
   `available <https://github.com/yoloseem/awesome-sphinxdoc>`_. And you can
   use all of them simultaneously. This can be especially useful if you are
   documenting the project which involves many programming languages.
-* 
 
 
 Cons
@@ -22,3 +21,4 @@ Cons
 * Syntax relies on indentation and sometimes it leads to the problems.
 * Sometimes it hard to decrypt Sphinx's error messages when it doesnt do what you've expected.
 * CLdomain is complex to setup. But you can use this repository as a skeleton :)
+* Sphinx and it's extensions are written in Python, I'd prefer to use Common Lisp.
