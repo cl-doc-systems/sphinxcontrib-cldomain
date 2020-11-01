@@ -45,10 +45,6 @@ jobs:
           echo /home/runner/.local/bin >> $GITHUB_PATH
       - name: Install Python Dependencies
         run: /home/runner/.local/bin/pipenv install
-      - name: Checking Token
-        run: 'env | grep TOKEN'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Build docs
         run: /home/runner/.local/bin/pipenv run docs/scripts/build.ros
         env:

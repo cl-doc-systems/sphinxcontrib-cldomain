@@ -107,7 +107,8 @@ behaviour could be overriden by keyword argument ``:raise t``."
        (unless (uiop:getenv "GITHUB_TOKEN")
          (error 'unable-to-proceed
                 :message "Please, provide GITHUB_TOKEN environment variable."))
-       (format nil "https://~A@github.com/~A"
+       (format nil "https://~A:~A@github.com/~A"
+               (uiop:getenv "GITHUB_ACTOR")
                (uiop:getenv "GITHUB_TOKEN")
                (uiop:getenv "GITHUB_REPOSITORY")))
       ;; otherwise make it from travis secret token and repo slug
