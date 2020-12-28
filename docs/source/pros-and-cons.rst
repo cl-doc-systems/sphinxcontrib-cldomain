@@ -12,6 +12,7 @@ Pros
   `available <https://github.com/yoloseem/awesome-sphinxdoc>`_. And you can
   use all of them simultaneously. This can be especially useful if you are
   documenting the project which involves many programming languages.
+* Provides cross-reference helpers.
 
 
 Cons
